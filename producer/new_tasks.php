@@ -3,7 +3,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-sleep(10000)
 $connection = new AMQPStreamConnection('rabbitmq', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 $channel->queue_declare('task_queue', false, true, false, false);
