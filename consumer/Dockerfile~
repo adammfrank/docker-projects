@@ -8,5 +8,4 @@ WORKDIR /usr/src/myapp
 RUN docker-php-ext-install bcmath
 RUN composer install
 
-CMD while ! nc -z rabbitmq 5672; do echo "Waiting for rabbitmq";sleep 3; done
-CMD  php -f worker.php
+CMD while ! nc -z rabbitmq 5672; do sleep 3000; done; php -f worker.php
