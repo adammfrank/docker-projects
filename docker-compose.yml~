@@ -1,0 +1,25 @@
+version: "3"
+services:
+        producer:
+                image: producer
+                container_name: producer
+                networks: 
+                        - rabbit-net
+                depends_on:
+                        - rabbitmq
+                        - consumer
+        consumer:
+                image: consumer
+                container_name: consumer
+                networks: 
+                        - rabbit-net
+                depends_on:
+                        - rabbitmq
+        rabbitmq:
+                image: adammfrank/rabbitmq
+                container_name: rabbitmq
+                networks: 
+                        - rabbit-net
+
+networks:
+        rabbit-net:
